@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora IMC</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+    <body>
+        <section>
+            <div class="titulo">
+                <h1>Cálculo de IMC</h1>
+            </div>
+            <div id="dados">
+                <h2>Peso<a>(ex: 65.70)</a>
+                    <br><input type="number" name="pes" id="peso">
+                </h2>
+
+                <h2>Altura<a>(ex: 1.72)</a> 
+                    <br><input type="number" name="alt" id="altura">
+                </h2>
+                <h2>
+                    <input type="button" value="Calcular" onclick="calcular()">
+                </h2>
+            </div>
+            <div id="res">
+                
+            </div>
+        </section>  
+
+        <script>
+            function calcular(){
+            let p = window.document.getElementById(`peso`)
+            let a = window.document.getElementById(`altura`)
+            let res = window.document.querySelector('div#res')
+            if(peso.value.length == 0  || altura.value.length == 0){
+                window.alert('Por favor, insira os dados')
+            } else if(peso.value < 0 || altura.value < 0 || altura.value > 3){
+                window.alert('Por favor, verifique se os dados estão corretos')
+            } else{
+                let peso = Number(p.value)
+                let altura = Number(a.value)
+                imc = peso / (altura * altura)
+                if(imc < 18.5){
+                res.innerHTML = `Seu IMC é ${parseFloat(imc.toFixed(2))} e está classificado como Magreza`
+                }else if(imc > 18.5 && imc <= 24.9){
+                    res.innerHTML = `Seu IMC é ${parseFloat(imc.toFixed(2))} e está classificado como Padrão`
+                }else if(imc > 24.9 && imc <= 29.9){
+                    res.innerHTML = `Seu IMC é ${parseFloat(imc.toFixed(2))} e está classificado como Sobrepeso`
+                }else if(imc > 29.9 && imc <= 39.9){
+                    res.innerHTML = `Seu IMC é ${parseFloat(imc.toFixed(2))} e está classificado como Obesidade`
+                }else{
+                    res.innerHTML = `Seu IMC é ${parseFloat(imc.toFixed(2))} e está classificado como Obesidade Grave`
+                }
+            }
+        }
+        </script>
+    </body>
+</html>
